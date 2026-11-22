@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puente Laboral | Demo</title>
+<style>
+:root{--navy:#0f2f4f;--blue:#1685b7;--cyan:#23b8d2;--pale:#edf7fa;--ink:#243746;--muted:#6b7e8b;--line:#dce8ed;--white:#fff;--orange:#f4a442}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f6fafb}
+header{background:var(--navy);color:white;padding:18px max(5vw,20px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-size:22px;font-weight:800;letter-spacing:.3px}.brand span{color:var(--cyan)}
+nav{display:flex;gap:8px;flex-wrap:wrap}button,.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}
+nav button{background:rgba(255,255,255,.13)}nav button.active{background:var(--cyan);color:var(--navy)}
+main{max-width:1100px;margin:28px auto;padding:0 18px}.hero{background:linear-gradient(120deg,var(--navy),#176c91);color:white;border-radius:20px;padding:30px;display:grid;grid-template-columns:1.4fr .8fr;gap:20px;align-items:center}
+h1{font-size:clamp(28px,4vw,42px);margin:0 0 12px}.hero p{line-height:1.6;color:#e3f4f8;max-width:650px}.pill{display:inline-block;background:#dff7fb;color:#0d5771;border-radius:30px;padding:6px 10px;font-size:12px;font-weight:800}
+.hero-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:18px;border-radius:16px}
+h2{color:var(--navy);margin:28px 0 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+input,select,textarea{padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:white;color:var(--ink);width:100%}
+.toolbar input{max-width:320px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:15px}
+.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 20px rgba(15,47,79,.04)}
+.card h3{margin:8px 0;color:var(--navy)}.meta{font-size:13px;color:var(--muted);line-height:1.6}.tag{display:inline-block;background:var(--pale);color:#176c91;padding:5px 8px;border-radius:7px;font-size:11px;font-weight:800;margin:3px 3px 3px 0}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.muted{color:var(--muted)}.hidden{display:none!important}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:18px}
+label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:12px 0 6px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.notice{background:#fff7e8;border:1px solid #f4dfb7;padding:12px 14px;border-radius:10px;color:#77501c;font-size:13px;line-height:1.5}
+.status{font-weight:800;color:#176c91}.footer{margin:35px 0 10px;color:var(--muted);font-size:12px;text-align:center}
+.secondary{background:#e8f4f7;color:var(--navy)}.danger{background:#fcebea;color:#8a332e}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}header{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">PUENTE <span>LABORAL</span></div>
+ <nav>
+  <button class="active" data-view="home">Inicio</button>
+  <button data-view="jobs">Vacantes</button>
+  <button data-view="profile">Mi perfil</button>
+  <button data-view="business">Negocios</button>
+  <button data-view="applications">Postulaciones</button>
+ </nav>
+</header>
+<main>
+<section id="home" class="view">
+ <div class="hero">
+  <div><span class="pill">DEMO NAVEGABLE · DATOS DE EJEMPLO</span>
+   <h1>Que el primer empleo sea un comienzo claro.</h1>
+   <p>Conectamos jóvenes que buscan su primera oportunidad laboral con pequeños negocios que necesitan talento. Consulta vacantes con información visible sobre funciones, horario, ubicación, salario o rango y tipo de vinculación.</p>
+   <button onclick="show('jobs')">Explorar vacantes</button>
+  </div>
+  <div class="hero-box"><h3>Una búsqueda más clara</h3><p>Antes de postularte, revisa las condiciones del puesto. Los negocios pueden publicar oportunidades y revisar perfiles interesados.</p><span class="tag">Primer empleo</span><span class="tag">Transparencia</span><span class="tag">Conexión local</span></div>
+ </div>
+ <h2>¿Cómo funciona?</h2>
+ <div class="grid">
+  <div class="card"><span class="pill">01 · JÓVENES</span><h3>Crea tu perfil</h3><p class="meta">Registra tus habilidades, intereses y disponibilidad.</p></div>
+  <div class="card"><span class="pill">02 · EXPLORA</span><h3>Compara oportunidades</h3><p class="meta">Consulta condiciones de cada vacante antes de postularte.</p></div>
+  <div class="card"><span class="pill">03 · NEGOCIOS</span><h3>Publica y conecta</h3><p class="meta">Describe la vacante y revisa los perfiles interesados.</p></div>
+ </div>
+</section>
+
+<section id="jobs" class="view hidden">
+ <span class="pill">ESPACIO PARA JÓVENES</span><h2>Vacantes de entrada</h2>
+ <p class="muted">Vacantes ficticias creadas únicamente para demostrar la navegación del prototipo.</p>
+ <div class="toolbar"><input id="search" placeholder="Buscar cargo o habilidad..." oninput="renderJobs()"><select id="type" onchange="renderJobs()"><option value="">Todas las áreas</option><option>Atención al cliente</option><option>Operaciones</option><option>Administrativo</option><option>Tecnología</option></select></div>
+ <div id="joblist" class="grid"></div>
+ <div id="jobdetail" class="panel hidden"></div>
+</section>
+
+<section id="profile" class="view hidden">
+ <span class="pill">PERFIL DE PRUEBA</span><h2>Mi perfil</h2>
+ <div class="panel">
+  <div class="formgrid">
+   <div><label>Nombre</label><input id="pname" placeholder="Ej. Andrea Pérez"></div>
+   <div><label>Correo electrónico</label><input id="pemail" placeholder="andrea@correo.com"></div>
+   <div><label>Habilidades</label><input id="pskills" placeholder="Servicio al cliente, Excel..."></div>
+   <div><label>Disponibilidad</label><select id="ptime"><option>Tiempo completo</option><option>Medio tiempo</option><option>Fines de semana</option><option>Por turnos</option></select></div>
+  </div>
+  <label>Intereses</label><textarea id="pinterest" rows="3" placeholder="¿Qué tipo de oportunidad buscas?"></textarea>
+  <p><button onclick="saveProfile()">Guardar perfil de prueba</button></p><p id="profilemsg" class="status"></p>
+ </div>
+</section>
+
+<section id="business" class="view hidden">
+ <span class="pill">ESPACIO PARA PEQUEÑOS NEGOCIOS</span><h2>Publicar una vacante</h2>
+ <div class="panel">
+  <div class="formgrid">
+   <div><label>Nombre del negocio</label><input id="bname" placeholder="Ej. Café del Parque"></div>
+   <div><label>Nombre del cargo</label><input id="brole" placeholder="Ej. Auxiliar de tienda"></div>
+   <div><label>Área</label><select id="barea"><option>Atención al cliente</option><option>Operaciones</option><option>Administrativo</option><option>Tecnología</option></select></div>
+   <div><label>Ubicación</label><input id="bloc" placeholder="Ciudad o localidad"></div>
+   <div><label>Salario o rango</label><input id="bsalary" placeholder="Indicar monto o rango"></div>
+   <div><label>Horario</label><input id="bhours" placeholder="Ej. Lunes a viernes, 8 a. m. a 5 p. m."></div>
+   <div><label>Tipo de vinculación</label><input id="bcontract" placeholder="Especificar tipo"></div>
+   <div><label>Habilidades solicitadas</label><input id="bskills" placeholder="Ej. Comunicación, puntualidad"></div>
+  </div>
+  <label>Funciones principales</label><textarea id="bduties" rows="3" placeholder="Describe las responsabilidades del cargo"></textarea>
+  <p><button onclick="publishJob()">Publicar vacante de demostración</button></p>
+  <p id="businessmsg" class="status"></p>
+ </div>
+ <h2>Vacantes publicadas en esta sesión</h2><div id="ownjobs" class="grid"></div>
+</section>
+
+<section id="applications" class="view hidden">
+ <span class="pill">SEGUIMIENTO</span><h2>Mis postulaciones</h2>
+ <p class="muted">Las postulaciones se guardan localmente en este navegador para demostrar el flujo.</p>
+ <div id="applist" class="grid"></div>
+</section>
+<div class="footer">PUENTE LABORAL · Prototipo/MVP demostrativo académico · No procesa datos reales ni realiza contrataciones.</div>
+</main>
+<script>
+const initialJobs=[
+{id:1,role:"Auxiliar de tienda",company:"Comercio de barrio (demo)",area:"Atención al cliente",location:"Bogotá · localidad por definir",salary:"Rango salarial por acordar",hours:"Turnos por acordar",contract:"Tipo por definir por el empleador",skills:"Comunicación, servicio al cliente",duties:"Apoyar la atención a clientes, organizar productos y mantener el espacio de trabajo.",status:"Abierta"},
+{id:2,role:"Auxiliar de operaciones",company:"Negocio local (demo)",area:"Operaciones",location:"Bogotá · localidad por definir",salary:"Salario por informar",hours:"Jornada por acordar",contract:"Vinculación por especificar",skills:"Organización, trabajo en equipo",duties:"Apoyar tareas operativas, alistamiento y control básico de inventario.",status:"Abierta"},
+{id:3,role:"Asistente administrativo junior",company:"Microempresa (demo)",area:"Administrativo",location:"Bogotá · modalidad por acordar",salary:"Rango por definir",hours:"Horario por acordar",contract:"Tipo por especificar",skills:"Ofimática, orden, comunicación",duties:"Apoyar archivo, actualización de información y tareas administrativas básicas.",status:"Abierta"},
+{id:4,role:"Auxiliar de soporte digital",company:"Emprendimiento tecnológico (demo)",area:"Tecnología",location:"Bogotá · modalidad por acordar",salary:"A convenir",hours:"Horario por acordar",contract:"Tipo por definir",skills:"Herramientas digitales, atención",duties:"Apoyar consultas básicas de usuarios y registrar solicitudes de soporte.",status:"Abierta"}
+];
+let jobs=JSON.parse(localStorage.getItem("pl_jobs")||"null")||initialJobs;
+let apps=JSON.parse(localStorage.getItem("pl_apps")||"[]");
+function save(){localStorage.setItem("pl_jobs",JSON.stringify(jobs));localStorage.setItem("pl_apps",JSON.stringify(apps))}
+function show(id){document.querySelectorAll(".view").forEach(v=>v.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));if(id==="jobs")renderJobs();if(id==="applications")renderApps();if(id==="business")renderOwnJobs();window.scrollTo(0,0)}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));
+function renderJobs(){let q=(document.getElementById("search")?.value||"").toLowerCase(),a=document.getElementById("type")?.value||"";let list=jobs.filter(j=>(!a||j.area===a)&&(`${j.role} ${j.skills} ${j.company}`.toLowerCase().includes(q)));document.getElementById("joblist").innerHTML=list.map(j=>`<article class="card"><span class="tag">${j.area}</span><h3>${j.role}</h3><div class="meta">${j.company}<br>${j.location}<br>${j.salary}</div><p><button onclick="detail(${j.id})">Ver condiciones</button></p></article>`).join("")||"<p>No hay vacantes para ese filtro.</p>";}
+function detail(id){let j=jobs.find(x=>x.id===id);let already=apps.some(a=>a.id===id);let d=document.getElementById("jobdetail");d.classList.remove("hidden");d.innerHTML=`<div class="row"><h3>${j.role}</h3><button class="secondary" onclick="document.getElementById('jobdetail').classList.add('hidden')">Cerrar</button></div><p class="meta">${j.company} · ${j.location}</p><p><b>Salario:</b> ${j.salary}<br><b>Horario:</b> ${j.hours}<br><b>Vinculación:</b> ${j.contract}<br><b>Habilidades:</b> ${j.skills}</p><p>${j.duties}</p><button ${already?"disabled":""} onclick="apply(${j.id})">${already?"Ya postulaste":"Postularme (demo)"}</button><p class="notice">Antes de una publicación real, el negocio debe completar y verificar todas las condiciones laborales.</p>`;d.scrollIntoView({behavior:"smooth"});}
+function apply(id){let j=jobs.find(x=>x.id===id);let p=JSON.parse(localStorage.getItem("pl_profile")||"{}");apps.push({id,role:j.role,company:j.company,date:new Date().toLocaleDateString("es-CO"),status:"Recibida",candidate:p.name||"Candidato de prueba"});save();detail(id);alert("Postulación de demostración registrada en este navegador.");}
+function saveProfile(){let p={name:pname.value,email:pemail.value,skills:pskills.value,time:ptime.value,interest:pinterest.value};localStorage.setItem("pl_profile",JSON.stringify(p));profilemsg.textContent="Perfil de prueba guardado localmente.";}
+function publishJob(){let j={id:Date.now(),role:brole.value.trim(),company:bname.value.trim()||"Negocio de prueba",area:barea.value,location:bloc.value||"Por definir",salary:bsalary.value||"Por definir",hours:bhours.value||"Por definir",contract:bcontract.value||"Por definir",skills:bskills.value||"Por definir",duties:bduties.value||"Funciones por definir",status:"Abierta"};if(!j.role){businessmsg.textContent="Escribe el nombre del cargo para continuar.";return;}jobs.unshift(j);save();businessmsg.textContent="Vacante de demostración publicada. Ya aparece en el listado.";renderOwnJobs();renderJobs();}
+function renderOwnJobs(){let own=jobs.filter(j=>j.id>4);ownjobs.innerHTML=own.map(j=>`<div class="card"><h3>${j.role}</h3><p class="meta">${j.company} · ${j.location}</p><span class="tag">${j.status}</span></div>`).join("")||"<p class='muted'>Aún no hay vacantes creadas en esta sesión.</p>";}
+function renderApps(){applist.innerHTML=apps.map(a=>`<div class="card"><h3>${a.role}</h3><p class="meta">${a.company}<br>Fecha: ${a.date}<br>Candidato: ${a.candidate}</p><p class="status">Estado: ${a.status}</p></div>`).join("")||"<div class='card'><p>Aún no tienes postulaciones de demostración.</p><button onclick=\"show('jobs')\">Buscar vacantes</button></div>";}
+renderJobs();
+</script>
+</body></html>
